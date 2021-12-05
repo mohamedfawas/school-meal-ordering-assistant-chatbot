@@ -1,0 +1,63 @@
+version: "2.0"
+
+stories:
+  - story: order food
+    steps:
+      - intent: greet
+      - action: utter_entry
+      - intent: order_food
+      - action: user_details_form
+      - action: action_submit
+      - intent: affirm
+      - action: action_list_of_schools
+
+  - story: cancel order
+    steps:
+      - intent: greet
+      - action: utter_entry
+      - intent: cancel_order
+      - action: utter_order_num
+
+
+#- story: order food
+#  steps:
+#  - intent: greet
+#  - action: utter_customer_name
+#  - intent: customer_name
+#    entities:
+#    - name: "fawas"
+#  - slot_was_set:
+#    - name: "fawas"
+#  - action: utter_mobile_number
+#  - intent: customer_mobile_number
+#    entities:
+#    - number: "2323454521"
+#  - slot_was_set:
+#    - number: "2323454521"
+  
+#- story: happy path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_great
+#  - action: utter_happy
+#
+#- story: sad path 1
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: utter_happy
+#
+#- story: sad path 2
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: deny
+#  - action: utter_goodbye
