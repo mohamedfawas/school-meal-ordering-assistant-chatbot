@@ -1,0 +1,112 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - order_food
+  - cancel_order
+  - customer_name:
+      use_entities:
+        - name
+  - customer_mobile_number:
+      use_entities:
+        - number
+  - value
+  - order_number_provide
+
+entities:
+  - name
+  - number
+  
+slots:
+  name:
+    type: text
+  number:
+    type: text
+  school_name:
+    type: text
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_entry:
+    - text: "Hey! Welcome to sCoolMeals.\nWhat would you like to do?"
+      buttons:
+        - title: "Order Food"
+          payload: "/order_food"
+        - title: "Cancel Order"
+          payload: "/cancel_order"
+
+#  utter_menu:
+#    - text: "Please select a school"
+#      custom:
+#        payload: dropDown
+#        data:
+#          - label: option1
+#            value: "/inform{'slot_name':'KV school'}"
+#          - label: option2
+#            value: "/inform{'slot_name':'ABC school'}"
+#          - label: option3
+#            value: "/inform{'slot_name':'XYZ school'}"
+
+#  utter_cheer_up:
+#  - text: "Here is something to cheer you up:"
+#    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+#  utter_did_that_help:
+#  - text: "Did that help you?"
+
+#  utter_happy:
+#  - text: "Great, carry on!"
+
+  utter_goodbye:
+    - text: "Bye"
+
+  utter_order_num:
+    - text: "What is your order number?"
+
+  utter_scoolmeal_bot:
+    - text: "Hai, I am scoolmeal assistant"
+
+  utter_welcome:
+  - text: "Welcome to sCoolMeals. How may I help you?"
+    buttons: 
+    - title: "Order food"
+      payload: "/order_food"
+    - title: "Cancel your order"
+      payload: "/cancel_order"
+      
+  utter_ask_name:
+  - text: "What is your name?"
+  
+  utter_ask_number:
+  - text: "What is your mobile number?"
+
+  utter_thanks:
+    - text: "Thanks for providing the values"
+
+  utter_details_thanks:
+    - text: "Thanks for providing the given details \nCustomer Name: {Customer_name},\nMobile Number: {Mobile_number} \nPlease reply 'yes' to confirm that the above details are correct."
+
+actions:
+  - action_submit
+  - action_list_of_schools
+
+forms:
+  user_details_form:
+    name:
+      - type: from_entity
+        entity: name
+    number:
+      - type: from_entity
+        entity: number
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
